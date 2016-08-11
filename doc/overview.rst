@@ -38,6 +38,7 @@ Options
 
  --output=FILE         write output to FILE, instead of standard output
  --verbose             report what is going on
+ --no-verbose          opposite of --verbose
  --image=FILE          put created disk image in FILE
  --size=SIZE           create a disk image of size SIZE (1000000000)
                        in bytes. Suffixes k,K,M,G,T are supported,
@@ -69,6 +70,7 @@ Options
  --enable-dhcp         enable DHCP on eth0
  --root-password=PASSWORD
                        set root password
+ --lock-root-password  lock root account so they cannot login?
  --customize=SCRIPT    run SCRIPT after setting up system. If the script
                        does not exist in the current working directory, 
                        :file:`/usr/share/vmdebootstrap/examples/` will be
@@ -101,7 +103,10 @@ Options
                        installed kernel.
  --boottype=FSTYPE     Filesystem to use for the /boot partition. (default ext2)
  --bootflag=FLAG       Flag to set on the first partition. (default none)
+ --bootoffset=SIZE     Space to leave at start of the image for bootloader
  --roottype=FSTYPE     Filesystem to use for the / (root) partition. (default ext4)
+ --part-type=PART-TYPE
+                       Partition type to use for this image. (default msdos)
  --swap=SWAPSIZE       If specified, create a swap partition of the given
                        size within the image. Debootstrapping will fail
                        if this results in a root partition which is too
@@ -114,10 +119,17 @@ Options
                        Note: foreign debootstraps may take a significant
                        amount of time to complete and debootstrap will
                        retry five times if packages fail to install by default.
+ --use-uefi            Setup image for UEFI boot
+ --no-use-uefi         opposite of --use-uefi
+ --esp-size=SIZE       Size of EFI System Partition - requires use-uefi
+ --extlinux            install extlinux (deprecated: default will change in a
+                       future release to use grub)
  --no-extlinux         Skip installation of extlinux. Needs grub, a customize script
                        or alternative bootloader to make the image bootable.
                        extlinux is deprecated and this will become the default
                        in a future release.
+ --mbr                 Run install-mbr (default if extlinux used)
+ --no-mbr              opposite of --mbr
  --squash=DIRECTORY    Run mksquashfs against the rootfs using xz
                        compression --- requires ``squashfs-tools`` to be installed.
                        The squashfs and other files needed to use the squashfs
@@ -146,6 +158,7 @@ Options
  --no-acpid            Disable installation of acpid if not required, otherwise
                        acpid will be installed if ``--foreign`` is not used.
  --sparse              Skip optimizing image for compression and keep a sparse image.
+ --no-sparse           opposite of --sparse
  --pkglist             Output a list of package names installed inside the image.
                        Useful if you need to track the relevant source packages
                        used inside the image for licence compliance.
@@ -154,6 +167,7 @@ Options
                        Skip the call to ``update-initramfs`` for reasons of
                        speed or practicality.
  --convert-qcow2       Convert the final raw image to qcow2 format.
+ --systemd-networkd    Use Predictable Network Interface Names
  --no-systemd-networkd
                        Do not use Predictable Network Interface Names using
                        systemd-networkd.
@@ -548,6 +562,9 @@ When limiting the run to specific tests, each ``--env`` option needs
 to be specified separately::
 
  $ sudo yarns/run-tests --env TESTS=build --env MIRROR=http://mirror/debian
+
+To run a single test, use the ``--run`` option to specify the name of the
+scenario (option can be repeated).
 
 pre-commit
 ----------
