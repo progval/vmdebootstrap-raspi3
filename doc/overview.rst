@@ -60,7 +60,8 @@ Options
                        previous versions.
  --package=PACKAGE     install PACKAGE onto system
  --custom-package=DEB  install package in DEB file onto system (not
-                       from mirror)
+                       from mirror) - all dependencies must be available
+                       in the specified distribution.
  --no-kernel           do not install a linux package
  --kernel-package=PACKAGE
                        If ``--no-kernel`` is not used and the auto-selection
