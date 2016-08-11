@@ -24,7 +24,7 @@ These tests are slow, since building images is slow.
     ASSUMING build tests are requested
     GIVEN user wants to build an image FOO.img that is 2GiB in size
     WHEN the user runs vmdebootstrap --sparse --extlinux
-    ... --roottype ext3 --enable-dhcp --configure-apt
+    ... --roottype ext3 --enable-dhcp --configure-apt --distribution stable
     THEN the image has the correct size
     AND the partition count of the image is 1
     AND partition 1 has the boot flag set
@@ -32,7 +32,6 @@ These tests are slow, since building images is slow.
     AND partition 1 has file /etc/debian_version matching ^8\..*$
     AND partition 1 has filename ldlinux.sys
     AND partition 1 has filename extlinux.conf
-    AND partition 1 has file /etc/apt/sources.list.d/base.list matching jessie
 
     SCENARIO build a Debian 8 image with grub
     ASSUMING build tests are requested
@@ -67,7 +66,6 @@ These tests are slow, since building images is slow.
     AND partition 1 has the boot flag set
     AND partition 1 has an ext4 filesystem
     AND partition 1 has symlink /sbin/init
-    AND partition 1 has file /etc/apt/sources.list.d/setup matching jessie
 
     SCENARIO build a Debian 8 image with uefi
     ASSUMING build tests are requested
