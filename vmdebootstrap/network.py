@@ -95,7 +95,7 @@ class Networking(Base):
         ethpath = os.path.join(rootdir, 'etc', 'systemd', 'network', '99-dhcp.network')
         with open(ethpath, 'w') as eth:
             eth.write('[Match]\n')
-            eth.write('Name=en*\n')
+            eth.write('Name=e*\n')  # jessie uses eth*, stretch uses ens*
             eth.write('\n[Network]\n')
             eth.write('DHCP=yes\n')
         runcmd(['chroot', rootdir, 'systemctl', 'enable', 'systemd-networkd'])
