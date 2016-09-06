@@ -1,0 +1,11 @@
+vmdebootstrap (1.6-1) unstable; urgency=medium
+
+  * extlinux support is now deprecated. Grub to become default.
+
+   extlinux relies on external components to install the bootloader
+   inside the image which prevents vmdebootstap building the same image
+   on different systems. For this reason, extlinux is deprecated and
+   the default will change in a future release to disabling extlinux
+   and using grub by default.
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 31 Jul 2016 15:05:58 +0100

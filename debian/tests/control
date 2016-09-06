@@ -1,0 +1,4 @@
+Tests: testsuite
+Depends: cmdtest, vmdebootstrap
+Restrictions: allow-stderr
+

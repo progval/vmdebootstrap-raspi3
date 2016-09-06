@@ -1,0 +1,257 @@
+vmdebootstrap (1.6-1) unstable; urgency=medium
+
+  * Deprecating extlinux as default - to switch to grub in a
+    future release.
+  * Fix customisation support for alternative mirrors.
+  * Switch to --no-systemd-networkd in man page (Closes: #831025)
+  * Enable systemd-resolved together with systemd-networkd to
+    ensure the final image has working DNS. (Closes: #831439)
+  * Reset umask before creating files and restore. (Closes: #822180)
+  * Disable ext4 with wheezy image (Closes: #822452)
+  * Update documentation for --customize. (Closes: #826275)
+  * Umount before doing the qcow2 conversion. (Closes: #831029)
+  * Ensure chown is called after the qcow2 conversion. (Closes: #831030)
+  * Exclude metadata_csum when building ext4 jessie images
+    (Closes: #827130)
+  * Support dependencies of custom packages. (Closes: #833398)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 17 Jul 2016 15:29:01 +0100
+
+vmdebootstrap (1.5-1) unstable; urgency=medium
+
+  * Improve documentation of SIZE setting. (Closes: #812727)
+  * Set boot partition type based on boottype. 
+    (Closes: #815256)
+  * Fix issue with fstab entry for boot partition. 
+    (Closes: #815255)
+  * Catch typos where the requested size is too small for a
+    bootstrap. (Closes: #811464)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 13 Mar 2016 14:44:53 +0000
+
+vmdebootstrap (1.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add support for root on btrfs with grub. (Closes: #741223)
+  * Add support for ppc64el kernel. (Closes: #809457)
+
+ -- Neil Williams <codehelp@debian.org>  Sat, 23 Jan 2016 17:38:14 +0000
+
+vmdebootstrap (1.3-1~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+  * cmdtest from backports is needed for the yarns tests.
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 20 Jan 2016 15:52:15 +0000
+
+vmdebootstrap (1.3-1) unstable; urgency=medium
+
+  * Add autopkgtest support for simple internal tests.
+  * Add tests on the package include functions and ensure that
+    no-kernel option works. (Closes: #808358)
+  * Disallow --apt-mirror without using --configure-apt as
+    well. (Closes: #806820)
+  * Adds support for converting final raw image to qcow2 format.
+  * Make update-initramfs call optional. (Closes: #801214)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 20 Dec 2015 15:15:47 +0000
+
+vmdebootstrap (1.2-1~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Neil Williams <codehelp@debian.org>  Tue, 17 Nov 2015 17:42:37 +0000
+
+vmdebootstrap (1.2-1) unstable; urgency=medium
+
+  * New upstream release, migrating from experimental.
+  * Skip serial-console support except on Wheezy. (Closes: #800910)
+  * Add support for mounting and umounting /dev/pts
+    (Closes: #802752)
+  * Add Iain R. Learmonth as uploader
+  * Update VCS locations for alioth.
+  * Add cmdtest to Suggests for yarn tests.
+
+ -- Neil Williams <codehelp@debian.org>  Thu, 05 Nov 2015 16:49:48 +0000
+
+vmdebootstrap (1.1-1) experimental; urgency=medium
+
+  * New upstream release for experimental
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 25 Oct 2015 18:10:19 +0000
+
+vmdebootstrap (1.0-1) experimental; urgency=medium
+
+  * New upstream release for experimental.
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 13 Sep 2015 21:37:00 +0100
+
+vmdebootstrap (0.11-1) unstable; urgency=medium
+
+  * New upstream release - handle efi options for wheezy support.
+    (Closes: #798225)
+  * Add debootstrapopts support to pass debootstrap options unchanged,
+    deprecate variant support which this replaces. (Closes: #770722)
+  * Reinstate headless supporti. (Closes: #798723)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 13 Sep 2015 11:15:03 +0100
+
+vmdebootstrap (0.10-1) unstable; urgency=medium
+
+  * New upstream release - handle efi lookup of other
+    architectures. (Closes: #797445)
+
+ -- Neil Williams <codehelp@debian.org>  Mon, 31 Aug 2015 18:25:56 +0100
+
+vmdebootstrap (0.9-1) unstable; urgency=medium
+
+  * New upstream release
+  * Add UEFI support using grub-efi
+  * Ensure that the /etc/network/interfaces.d/ directory
+    is created (Closes: #792182)
+
+ -- Neil Williams <codehelp@debian.org>  Sat, 15 Aug 2015 18:13:01 +0200
+
+vmdebootstrap (0.8-1) unstable; urgency=medium
+
+  * New upstream release
+  * Use distro-info to handle change in the i386 arch kernel package
+    name (Closes: #786767)
+  * Change setup_networking to check for /etc/network/interfaces but
+    populate /etc/network/interfaces.d/setup (Closes: #788792)
+  * Add no-acpid option. (Closes: #784638)
+  * Add python-distro-info for release and codename support.
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 28 Jun 2015 11:03:50 +0100
+
+vmdebootstrap (0.7-1) unstable; urgency=medium
+
+  * New upstream release for unstable.
+  * Default to armmp kernel variant on armhf. Patches
+    from: Vagrant Cascadian <vagrant@debian.org>
+    (Closes: #776975)
+  * Add vmextract helper.
+  * Avoid adding extlinux config when using grub2
+    from Jan Gerber <j@mailb.org> (Closes: #742267)
+  * Installing grub with boot partition requires an offset
+    before the first partition. (Closes: #782307)
+  * Only configure console if serial-console is set
+    from  Jan Gerber <j@mailb.org> (Closes: #782304)
+
+ -- Neil Williams <codehelp@debian.org>  Sat, 02 May 2015 20:23:36 +0100
+
+vmdebootstrap (0.6-1) experimental; urgency=medium
+
+  * New upstream release
+  * Implement support for bootoffset to allow space
+    ahead of the first partition.
+  * Prints which distribution (and which variant) is
+    being debootstrapped (Closes: #767806)
+  * Add notes on the types of images supported on ARM.
+  * Add option to create swap space inside the KVM, minimum
+    size 256Mb. (Closes: #764337)
+  * Update manpage to current mirror default. (Closes: #774477)
+  * Allow builds under buildbot where there is no tty. Patch
+    from Nick Daly <nick.m.daly@gmail.com> (Closes: #747373)
+
+ -- Neil Williams <codehelp@debian.org>  Tue, 23 Dec 2014 16:55:31 +0000
+
+vmdebootstrap (0.5-2) unstable; urgency=medium
+
+  * Backport patches from upstream master branch to fix creation of images
+    larger than 1GB that use extlinux (the default). Closes: #774588
+    . In debian/patches/:
+      - 0001-fix-creation-of-extlinux-configuration.patch
+      - 0002-add-mbr-back-to-support-extlinux-and-check-for-insta.patch
+
+ -- Antonio Terceiro <terceiro@debian.org>  Mon, 02 Feb 2015 18:38:22 -0200
+
+vmdebootstrap (0.5-1) unstable; urgency=medium
+
+  * New upstream bug fix release for Jessie.
+  * Allow parted to reserve space for grub2 on disk when
+    also using --bootsize option. (Closes: #767913)
+  * Move grub2-common to Recommends. (Closes: #767196)
+  * Add section on bootloaders to manpage.
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 16 Nov 2014 15:11:34 +0000
+
+vmdebootstrap (0.4-3) unstable; urgency=medium
+
+  * Fix syntax for excluding grub2-common on mips and s390x
+
+ -- Neil Williams <codehelp@debian.org>  Tue, 21 Oct 2014 08:49:03 +0100
+
+vmdebootstrap (0.4-2) unstable; urgency=medium
+
+  * Avoid grub2-common on mips and s390x, falls back
+    to extlinux with a warning message.
+
+ -- Neil Williams <codehelp@debian.org>  Mon, 20 Oct 2014 18:38:13 +0100
+
+vmdebootstrap (0.4-1) unstable; urgency=medium
+
+  * Change Default mirror URL to use http://http.debian.net/debian/
+    (Closes: #765610)
+  * Run update-initramfs -u when installing a kernel package.
+    (Closes: #764596)
+  * Add devel mailing list as maintainer
+  * Add grub2-common as a dependency for grub install support.
+  * Set a noninteractive debconf environment for secondstage.
+
+ -- Neil Williams <codehelp@debian.org>  Sat, 18 Oct 2014 20:22:23 +0100
+
+vmdebootstrap (0.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * Allows images to not always be owned by root. Thanks to Nick Daly 
+    <nick.m.daly@gmail.com> (Closes: #748477)
+  * Drop manpage patch, included upstream
+  * Drop kpartx patch, included upstream
+  * Add example customisation scripts for armhf targets.
+  * Recommend qemu to test built images and add notes about bootloaders
+    to control file. Drop need for mbr, not used by default
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 27 Aug 2014 23:21:10 -0700
+
+vmdebootstrap (0.2-3) unstable; urgency=medium
+
+  * Drop (<< 3:6.00~) from extlinux dependency (Closes: #748650). I was able
+    to generate an image and boot it with kvm just fine with extlinux
+    3:6.03~pre1+dfsg-4
+  * debian/control: point Vcs-* at collab-maint repository
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 20 May 2014 10:07:15 -0300
+
+vmdebootstrap (0.2-2) unstable; urgency=medium
+
+  * Make kpartx wait whilst the partitions are created.
+    (Closes: #741407)
+  * Update homepage location.
+  * Add a check on the cleanup umount and re-try if
+    unable to complete. (Closes: #740310)
+
+ -- Neil Williams <codehelp@debian.org>  Sat, 15 Mar 2014 13:25:21 +0000
+
+vmdebootstrap (0.2-1) unstable; urgency=medium
+
+  * Update for new upstream location and new
+    upstream release. (Closes: #728138)
+  * Adapt copyright and watch file to new upstream location.
+
+ -- Neil Williams <codehelp@debian.org>  Thu, 21 Nov 2013 22:49:12 +0000
+
+vmdebootstrap (0.1.0-2) unstable; urgency=low
+
+  * Restrict the package to the usable architectures,
+    amd64 and i386 only. (Closes: #722921)
+  * Fix problem with the orig.tar.gz differing from the
+    0.1.0 upstream tag. (Closes: #721668)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 15 Sep 2013 20:27:32 +0100
+
+vmdebootstrap (0.1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #711794)
+
+ -- Neil Williams <codehelp@debian.org>  Tue, 23 Jul 2013 13:16:41 +0100

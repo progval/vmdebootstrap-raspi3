@@ -1,0 +1,36 @@
+Source: vmdebootstrap
+Section: admin
+Priority: extra
+Maintainer: VMDebootstrap List <vmdebootstrap-devel@lists.alioth.debian.org>
+Uploaders: Neil Williams <codehelp@debian.org>,
+ Iain R. Learmonth <irl@debian.org>,
+ Antonio Terceiro <terceiro@debian.org>
+Build-Depends: debhelper (>= 8.0.0), dh-python,
+ python-sphinx (>= 1.0.7+dfsg) | python3-sphinx,
+ python | python-all | python-dev | python-all-dev,
+ python-setuptools (>= 3)
+Testsuite: autopkgtest
+X-Python-Version: 2.7
+Standards-Version: 3.9.8
+Homepage: https://vmdebootstrap.alioth.debian.org/
+Vcs-Git: https://anonscm.debian.org/git/vmdebootstrap/vmdebootstrap.git
+Vcs-Browser: https://anonscm.debian.org/cgit/vmdebootstrap/vmdebootstrap.git/
+
+Package: vmdebootstrap
+Architecture: linux-any
+Depends: debootstrap, qemu-utils, kpartx, parted,
+ ${sphinxdoc:Depends}, ${python:Depends}, ${misc:Depends}
+Recommends: dosfstools, grub2-common [!mips !s390x],
+ extlinux [amd64 i386],
+ squashfs-tools, python-guestfs, qemu-system, qemu-user-static
+Suggests: cmdtest, mbr, pandoc, u-boot:armhf
+Description: Bootstrap Debian into a (virtual machine) disk image
+ vmdebootstrap is a wrapper around debootstrap to install Debian
+ into a disk image, which can be used with a virtual machine (such as KVM).
+ .
+ syslinux and grub2 bootloaders can be supported, depending on the
+ distribution and the architecture. An example of setting up u-boot
+ for armhf on a beaglebone-black is included.
+ .
+ This package also includes documentation on using vmdebootstrap
+ to create installation images and live images.

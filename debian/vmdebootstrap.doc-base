@@ -1,0 +1,11 @@
+Document: vmdebootstrap
+Title: Debian Vmdebootstrap Manual
+Author: Neil Williams <codehelp@debian.org>
+Abstract: This manual describes what vmdebootstap is
+ and how it can be used to create virtual machine
+ images, installation images and live images.
+Section: Debian
+
+Format: HTML
+Index: /usr/share/doc/vmdebootstrap/html/index.html
+Files: /usr/share/doc/vmdebootstrap/html/*.html

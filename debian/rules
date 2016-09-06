@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# Prevent setuptools/distribute from accessing the internet.
+export http_proxy = http://127.0.9.1:9
+
+export LAST_CHANGE=$(shell dpkg-parsechangelog -S Date)
+export BUILD_DATE=$(shell LC_ALL=C date -u "+%B %d, %Y" -d "$(LAST_CHANGE)")
+
+# This has to be exported to make some magic below work.
+export DH_OPTIONS
+
+%:
+	dh $@ --with sphinxdoc,python2
+
+override_dh_auto_build:
+	dh_auto_build
+	python setup.py build
+	make -C doc/ html SPHINXOPTS="-D today=\"$(BUILD_DATE)\""
+	make -C man/ man SPHINXOPTS="-D today=\"$(BUILD_DATE)\""
+
+override_dh_auto_install:
+	dh_auto_install
+	dh_lintian
+	python setup.py install --root=$(CURDIR)/debian/vmdebootstrap/ --install-layout=deb
+	# move vmdebootstrap to /usr/sbin
+	mkdir debian/vmdebootstrap/usr/sbin/
+	mv debian/vmdebootstrap/usr/bin/vmdebootstrap debian/vmdebootstrap/usr/sbin/
+
+override_dh_auto_clean:
+	dh_auto_clean
+	$(RM) -r vmdebootstrap.egg-info doc/_build dist/
+	[ ! -f doc/Makefile ] || make -C doc/ clean
+	[ ! -f doc/Makefile ] || make -C man/ clean
