@@ -1,3 +1,9 @@
+vmdebootstrap (1.6+git-1) UNRELEASED; urgency=medium
+
+  * New maintainer: Lars Wirzenius replaces Neil Williams.
+
+ -- Lars Wirzenius <liw@liw.fi>  Sat, 10 Sep 2016 20:48:58 +0300
+
 vmdebootstrap (1.6-1) unstable; urgency=medium
 
   * Deprecating extlinux as default - to switch to grub in a

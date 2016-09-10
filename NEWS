@@ -1,7 +1,17 @@
 NEWS for vmdebootstrap
 ======================
 
-Version 0.3, unreleased
+Version 1.6+git, not yet released
+---------------------------------
+
+* New maintainer: Lars Wirzenius replaces Neil Williams.
+
+A lot of history missing from NEWS
+----------------------------------
+
+It's in git logs and debian/changelog, but wasn't included here.
+
+Version 0.3
 -----------------------
 
 * Add example customisation scripts to complement the support

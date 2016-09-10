@@ -22,9 +22,12 @@
 from setuptools import setup, find_packages
 
 
+import vmdebootstrap
+
+
 setup(
     name='vmdebootstrap',
-    version='1.6',
+    version=vmdebootstrap.__version__,
     description='Bootstrap Debian into a (virtual machine) disk image',
     author='Neil Williams',
     author_email='codehelp@debian.org',
