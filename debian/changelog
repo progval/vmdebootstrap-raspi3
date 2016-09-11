@@ -1,3 +1,9 @@
+vmdebootstrap (1.7+git-1) UNRELEASED; urgency=medium
+
+  * New upstream version.
+
+ -- Lars Wirzenius <liw@liw.fi>  Sun, 11 Sep 2016 18:07:38 +0300
+
 vmdebootstrap (1.7-1) unstable; urgency=medium
 
   * New maintainer: Lars Wirzenius replaces Neil Williams.
