@@ -5,6 +5,8 @@ Version 1.6+git, not yet released
 ---------------------------------
 
 * New maintainer: Lars Wirzenius replaces Neil Williams.
+* William Holland changed vmdebootstrap to allow all releases that
+  debootstrap does.
 
 A lot of history missing from NEWS
 ----------------------------------
