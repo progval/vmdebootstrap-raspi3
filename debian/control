@@ -3,8 +3,7 @@ Section: admin
 Priority: extra
 Maintainer: VMDebootstrap List <vmdebootstrap-devel@lists.alioth.debian.org>
 Uploaders: Lars Wirzenius <liw@liw.fi>,
- Iain R. Learmonth <irl@debian.org>,
- Antonio Terceiro <terceiro@debian.org>
+ Iain R. Learmonth <irl@debian.org>
 Build-Depends: debhelper (>= 8.0.0), dh-python,
  python-sphinx (>= 1.0.7+dfsg) | python3-sphinx,
  python | python-all | python-dev | python-all-dev,
