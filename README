@@ -1,9 +1,10 @@
 README for vmdebootstrap
 ========================
 
-`debootstrap` installs a basic Debian system into a directory, for use with
-`chroot`(8). `vmdebootstrap` is a wrapper around it to install Debian into
-a disk image, which can be used with a virtual machine (such as KVM).
+`debootstrap` installs a basic Debian system into a directory, for use
+with `chroot`(8). `vmdebootstrap` is a wrapper around it to install
+Debian into a disk image, which can be used with virtual machines or
+real hardware.
 
 See the manual page and `vmdebootstrap --help` for details on how to
 use the program. The manual page has an example.
@@ -168,11 +169,30 @@ To format the test suite document:
 
     make -C yarns
 
+Making a release
+----------------
+
+Release are best made with the bumper tool (http://liw.fi/bumper/),
+or simulating that by hand:
+
+* Update version number (`vmdebootstrap/version.py`, `NEWS`,
+  `debian/changelog`).
+* Also update `NEWS` to to say version is released (with date).
+* Commit, and tag the commit with `vmdebootstrap-x.y` for version x.y.
+* Update version number and `NEWS` again to say the version is
+  `x.y+git`. This makes it clear when a version is from git and not
+  frmo a release.
+* Commit.
+
+CI will then build and upload packages. CI is currently running on
+Lars's home server.
+
 Legalese
 --------
 
-Copyright 2011-2013  Lars Wirzenius
+Copyright 2011-2013,2016  Lars Wirzenius
 Copyright 2012  Codethink Limited
+Copyright 2013-2016  Neil Williams
  
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
