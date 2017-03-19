@@ -46,7 +46,7 @@ arch_table = {  # pylint: disable=invalid-name
         'package': 'grub-efi-arm64',
         'bin_package': 'grub-efi-arm64-bin',
         'extra': None,
-        'exclusive': True,
+        'exclusive': False,
         'target': 'arm64-efi',
     }
 }
