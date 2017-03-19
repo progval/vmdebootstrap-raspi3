@@ -107,6 +107,12 @@ Options
  --boottype=FSTYPE     Filesystem to use for the /boot partition. (default ext2)
  --bootflag=FLAG       Flag to set on the first partition. (default none)
  --bootoffset=SIZE     Space to leave at start of the image for bootloader
+ --bootdirfmt=FORMAT   Format string for determining the path to /boot.
+                       Default is ``%s/boot/``. To mount the boot partition
+                       at ``/boot/firmware/`` (e.g. for the Raspberry Pi), use::
+
+                        "%s/boot/firmware"
+
  --roottype=FSTYPE     Filesystem to use for the / (root) partition. (default ext4)
  --part-type=PART-TYPE
                        Partition type to use for this image. (default msdos)

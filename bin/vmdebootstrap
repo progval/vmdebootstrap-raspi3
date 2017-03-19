@@ -78,6 +78,7 @@ class VmDebootstrap(cliapp.Application):  # pylint: disable=too-many-public-meth
         self.settings.string(['bootflag'], 'specify flag to set for /boot/', default='')
         self.settings.bytesize(['bootoffset'], 'Space to leave at start of the '
                                'image for bootloader', default='0')
+        self.settings.string(['bootdirfmt'], 'Format string for determining the path to /boot', default='%s/boot/')
         self.settings.boolean(['use-uefi'], 'Setup image for UEFI boot', default=False)
         self.settings.bytesize(['esp-size'], 'Size of EFI System Partition - '
                                'requires use-uefi', default='5mib')
@@ -248,9 +249,9 @@ class VmDebootstrap(cliapp.Application):  # pylint: disable=too-many-public-meth
         elif bootdev:
             boottype = self.settings['boottype']
             filesystem.mkfs(bootdev, fstype=boottype)
-            self.bootdir = '%s/%s' % (rootdir, 'boot/')
+            self.bootdir = self.settings['bootdirfmt'] % rootdir
             filesystem.devices['bootdir'] = self.bootdir
-            os.mkdir(self.bootdir)
+            os.makedirs(self.bootdir)
             self.mount(bootdev, self.bootdir)
 
         # set user-specified flags, e.g. lba
